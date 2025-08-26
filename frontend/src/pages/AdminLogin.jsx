@@ -32,14 +32,17 @@ const AdminLogin = () => {
                 withCredentials: true
             }
             )
-
             if (response.data.user) {
-                nav('/admin/post')
+                nav("/admin/post")
             }
-
         } catch (error) {
-            const errorMsg = 
+            const errorMsg = error.response.data.message || '로그인 실패'
+
+            setError({
+                message: errorMsg
+            })
         }
+
     }
 
     return (
@@ -48,26 +51,28 @@ const AdminLogin = () => {
                 <h3>관리자 로그인</h3>
                 <p>관리자 전용 페이지 입니다.</p>
             </div>
-            <form className='login-form'>
+            <form className='login-form' onSubmit={handleSubmit}>
                 <div className="form-field">
-                    <label htmlFor="username">관리자 아이디 : </label>
+
+                    <label htmlFor="username">관리자 아이디 :</label>
                     <input
                         type="text"
+                        name='username'
                         id='username'
-                        required placeholder='관리자 아이디'
-                        onChange={handleChange}
                         value={formData.username}
-                    />
+                        onChange={handleChange}
+                        required placeholder='관리자 아이디' />
                 </div>
                 <div className="form-field">
-                    <label htmlFor="password">관리자 비밀번호 : </label>
-                    <input
-                        type="password"
-                        id='password' required
-                        placeholder='관리자 비밀번호'
-                        onChange={handleChange}
+
+                    <label htmlFor="password">관리자 비밀번호 :</label>
+                    <input type="password"
+                        id='password'
+                        name='password'
+                        required
                         value={formData.password}
-                    />
+                        onChange={handleChange}
+                        placeholder='관리자 비밀번호' />
                 </div>
                 <div className="error-box"></div>
                 <button type='submit'>로그인</button>
