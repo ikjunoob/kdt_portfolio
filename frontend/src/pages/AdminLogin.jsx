@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { api } from '../lib/api'
-import { useNavigate } from 'react-router-dom'
-import './styles/AdminLogin.scss'
+import { api } from "../lib/api"
+import { useNavigate } from "react-router-dom"
+import "./styles/AdminLogin.scss"
 
 const AdminLogin = () => {
 
     const nav = useNavigate()
     const [formData, setFormData] = useState({
-        username: '',
-        password: ''
+        username: "",
+        password: ""
     })
-
     const [checking, setChecking] = useState(true)
     const [submitting, setSubmitting] = useState(false)
 
@@ -46,7 +45,7 @@ const AdminLogin = () => {
     }
 
     return (
-        <div>
+        <div className='login-container'>
             <div className='login-header'>
                 <h3>관리자 로그인</h3>
                 <p>관리자 전용 페이지 입니다.</p>
