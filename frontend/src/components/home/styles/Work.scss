@@ -1,0 +1,302 @@
+/* 공통 Neutral Gray 팔레트 */
+$neutral: (
+    100: #f7f7f7,
+    200: #e5e5e5,
+    300: #d4d4d4,
+    400: #b3b3b3,
+    500: #8f8f8f,
+    600: #6a6a6a,
+    700: #4d4d4d,
+    800: #2e2e2e,
+    900: #1a1a1a
+);
+
+/* 라이트/다크 공통 변수 정의 */
+$light: (
+    bg: #fcfcfc,
+    text: #0f0f0f,
+    primary: #47FF97,
+    primary200: #25d873,
+    underline:#d8d8d8,
+    // Gray Tones
+    gray100: #f7f7f7,
+    // 가장 밝은 회색 (배경 가까움)
+    gray200: #e5e5e5,
+    gray300: #d4d4d4,
+    gray400: #b3b3b3,
+    gray500: #8f8f8f,
+    gray600: #6a6a6a,
+    gray700: #4d4d4d,
+    gray800: #2e2e2e,
+    gray900: #1a1a1a // 거의 검정에 가까움
+);
+
+$dark: (
+    bg: #0c0c0c,
+    text: #f0f0f0,
+    primary: #47FF97,
+    primary200: #25d873,
+    underline:#2b2b2b,
+    gray900: #f7f7f7,
+    // 가장 밝은 회색 (배경 가까움)
+    gray800: #e5e5e5,
+    gray700: #d4d4d4,
+    gray600: #b3b3b3,
+    gray500: #8f8f8f,
+    gray400: #6a6a6a,
+    gray300: #4d4d4d,
+    gray200: #2e2e2e,
+    gray100: #1a1a1a // 거의 검정에 가까움
+);
+
+:root {
+
+    /* Neutral 팔레트 추가 */
+    @each $k, $v in $neutral {
+        --neutral-#{$k}: #{$v};
+    }
+
+    @each $k, $v in $light {
+        --#{$k}: #{$v};
+    }
+}
+
+[data-theme="dark"] {
+    @each $k, $v in $dark {
+        --#{$k}: #{$v};
+    }
+}
+
+.inner.work-inner {
+    padding: 20rem 0;
+
+    .work-lst {
+        display: flex;
+        flex-direction: column;
+        gap: 5.4rem;
+        margin-top: 5rem;
+
+        >li {
+            background-color: var(--neutral-900);
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            flex: 1;
+            transition: all .3s;
+
+            .lst-t-wrap {
+                display: block;
+                padding: 3rem 1rem;
+                padding-left: 5rem;
+                flex: 1;
+
+                h4.lst-tit {
+                    color: var(--neutral-100);
+                }
+
+                p.lst-dsc {
+                    color: var(--neutral-400);
+                }
+            }
+
+            .lst-img-wrap {
+                width: 48rem;
+                height: 36rem;
+                display: block;
+                overflow: hidden;
+
+                .bg {
+                    width: 100%;
+                    height: 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    transition: all .3s;
+                }
+            }
+
+
+            &:hover {
+                background-color: var(--primary);
+
+                .lst-t-wrap {
+                    h4.lst-tit {
+                        color: var(--neutral-900);
+                    }
+
+                    p.lst-dsc {
+                        color: var(--neutral-600);
+                    }
+
+                    .tags {
+                        span {
+                            background-color: var(--neutral-900);
+                            color: var(--neutral-100);
+                        }
+                    }
+                }
+
+                .lst-img-wrap {
+                    .bg {
+                        transform: scale(1.05);
+                    }
+                }
+            }
+        }
+    }
+}
+
+section {
+    position: relative;
+    z-index: 0;
+    min-height: 100vh;
+    background-color: var(--bg);
+
+    // overflow: hidden;
+    &#Work {
+        height: auto;
+    }
+
+}
+
+header,
+section {
+    .inner {
+        position: relative;
+        max-width: 160rem;
+        height: 100%;
+        // min-height: 100vh;
+
+        margin: auto;
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--bg);
+            border: 0;
+            padding: .6rem 1rem;
+            cursor: pointer;
+            border-radius: .5rem;
+            text-transform: uppercase;
+        }
+
+        h1.tit {
+            font-size: clamp(6rem, 8vw, 16rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: .9;
+            letter-spacing: -.05rem;
+
+            span {
+                display: block;
+            }
+
+            span.star-spin {
+                display: inline-block;
+            }
+        }
+
+        p.txt {
+            // 글꼴 정의
+            font-size: clamp(2rem, 2vw, 2.8rem);
+            color: var(--gray600);
+        }
+
+        h2.sub-tit {
+            font-size: 7rem;
+            font-weight: 800;
+            // text-transform: uppercase;
+        }
+
+        h4.list-lst {
+            font-size: 2rem;
+            font-weight: 700;
+            border-bottom: .1rem solid var(--gray300);
+            line-height: 2;
+        }
+
+        h3.sub-tit-2 {
+            font-family: " Noto Sans KR";
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: 1.9rem;
+            font-size: clamp(4rem, 6vw, 9.6rem);
+            text-align: center;
+        }
+
+        h4.lst-tit {
+            font-size: clamp(2rem, 4vw, 5.4rem);
+            font-weight: 400;
+            letter-spacing: -0.02rem;
+        }
+
+        p.lst-dsc {
+            font-size: clamp(1.2rem, 1.2vw, 1.6rem);
+            font-weight: 200;
+            margin: 1rem 0;
+            letter-spacing: -0.02rem;
+
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+
+            span {
+                display: block;
+                padding: .5rem 1.6rem;
+                background-color: var(--gray100);
+                border-radius: 10rem;
+                color: var(--gray900);
+            }
+        }
+    }
+}
+
+span.star-spin {
+    // keyframes 여기에 적용
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1em;
+    height: 1em;
+    transform-origin: 50% 50%;
+    animation: rotate 3s infinite alternate;
+    position: relative;
+
+    i.star {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-style: normal;
+        color: var(--primary);
+    }
+
+    // ✱
+
+}
+
+.arrow {
+    font-size: 3rem;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes up {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(2rem);
+    }
+}
