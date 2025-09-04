@@ -1,12 +1,14 @@
 import React from 'react'
-import "./styles/contact.scss"
+import "./styles/Contact.scss"
 import contact from '../../utils/contact'
 const Contact = () => {
     return (
         <div className='inner contact-inner'>
             <h1 className="tit">
-                <span className="star-spin"><i className="star">✱</i></span>
-                aboutMe
+                contact
+                <span className="star-spin">
+                    <i className="star">✱</i>
+                </span>
             </h1>
             <div className="contact-wrapper">
                 <form className='contact-form'>
@@ -37,25 +39,32 @@ const Contact = () => {
                         </li>
                         <li>
                             <div className="field">
-                                <button type='submit'>contact me</button>
+                                <button type='submit' className='Button'>contact me</button>
                             </div>
                         </li>
                     </ul>
 
                 </form>
                 <ul className="contact-lst">
-                    {/* {} */}
-                    <li>
-                        <strong className="label"></strong>
-                        <div className="content">
-                            <a href="">전화번호...</a>
-                            <div className="hint"></div>
-                        </div>
-                    </li>
+                    {contact.basics.map((item) => (
+                        <li key={item.label}>
+                            <strong className="label">{item.label}</strong>
+                            <div className="content">
+                                <a href={item.href}>{item.value}</a>
+                                <div className="hint">{item.hint}</div>
+                            </div>
+                        </li>
+
+                    ))}
                     <li>
                         <strong className="label">채널</strong>
                         <div className="contact-chips">
+                            {contact.channels.map((item) => (
 
+                                <a href={item.href} key={item.channels}>
+                                    {item.label}
+                                </a>
+                            ))}
                         </div>
                     </li>
                 </ul>
