@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import "./styles/Header.scss";
 import { useTheme } from "../../context/ThemeContext";
+import FixedTop from "./FixedTop";
 
 const Header = () => {
     const { theme, toggleTheme } = useTheme();
