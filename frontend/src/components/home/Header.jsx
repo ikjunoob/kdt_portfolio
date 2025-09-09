@@ -1,45 +1,54 @@
-import React, { useEffect, useState } from "react";
-import Nav from "./Nav";
-import "./styles/Header.scss";
-import { useTheme } from "../../context/ThemeContext";
-import FixedTop from "./FixedTop";
-
+import React, { useEffect, useState } from 'react'
+import Nav from "./Nav"
+import "./styles/Header.scss"
+import { useTheme } from '../../context/ThemeContext'
+import FixedTop from './FixedTop'
 const Header = () => {
-    const { theme, toggleTheme } = useTheme();
-    const [scrolled, setScrolled] = useState(false);
+    const { theme, toggleTheme } = useTheme()
+    const [scrolled, setScrolled] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false)
 
     useEffect(() => {
-        if (typeof window === "undefined") return;
-
         const handleScroll = () => {
             if (window.scrollY > 50) {
-                setScrolled(true);
+                setScrolled(true)
             } else {
-                setScrolled(false);
+                setScrolled(false)
             }
-        };
+        }
+        handleScroll()
 
-        // 최초 진입 시 상태 동기화
-        handleScroll();
+        window.addEventListener('scroll', handleScroll)
 
-        // 성능을 위해 passive 옵션
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [])
+
+    useEffect(() => {
+        const onKey = (e) => e.key == 'Escape' && setMenuOpen(false)
+
+        document.addEventListener('keydown', onKey)
+        return () => document.removeEventListener('keydown', onKey)
+    }, [])
 
     return (
-        <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
+        <header className={`${scrolled ? "scroll" : ""} ${menuOpen ? "is-open" : ""} `}>
             <div className="inner">
                 <h4>LOGO</h4>
                 <div className="right-wrap">
-                    <Nav />
-                    <button className="btn" onClick={toggleTheme}>
-                        {theme}
+                    <button
+                        onClick={() => setMenuOpen(v => !v)}
+                        className='mob-nav-btn'>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
                     </button>
+                    <Nav />
+                    <button className='btn' onClick={toggleTheme}>{theme}</button>
+
                 </div>
             </div>
+            <FixedTop />
         </header>
-    );
-};
+    )
+}
 
-export default Header;
+export default Header
