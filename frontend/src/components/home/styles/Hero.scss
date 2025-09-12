@@ -8,6 +8,15 @@
         text-align: right;
         right: 2rem;
         bottom: 10rem;
+
+        @media screen and (max-width:599px) {
+            font-size: 1.6rem;
+            // width:50%;
+        }
+
+        @media screen and (max-width:399px) {
+            display: none;
+        }
     }
 
     .arrow {
