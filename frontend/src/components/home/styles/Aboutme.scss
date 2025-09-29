@@ -14,10 +14,6 @@
         transform: translateX(0);
         /* 수정된 부분: 11vw -> 0 */
         position: relative;
-
-        /* * 이제 기본 스타일이 왼쪽 정렬이므로 
-         * 이 미디어 쿼리는 특별한 반응형 처리가 필요 없다면 삭제해도 괜찮습니다.
-         */
         @media screen and (max-width:1599px) {
             /* 이전에 있던 align-self와 transform 속성을 밖으로 옮겼습니다. */
         }

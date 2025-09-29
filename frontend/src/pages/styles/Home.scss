@@ -1,0 +1,13 @@
+/* Home.scss */
+
+// Hero와 Aboutme를 감싸는 section 태그의 강제 높이 설정을 해제합니다.
+// 이렇게 하면 내부 컨텐츠(.hero-inner, .aboutme-inner)의 높이를 따라가게 됩니다.
+section#Hero,
+section#Aboutme {
+    height: auto;
+}
+
+// 스크롤 시 섹션들이 겹쳐 보이지 않도록 각 섹션에 배경색을 명시합니다.
+section {
+    background-color: var(--bg);
+}
