@@ -55,7 +55,7 @@ router.post('/login', async (req, res) => {
         if (!isMatch) {
             user.failedLoginAttempts += 1
             user.lastLoginAttempt = new Date()
-            if (user.failedLoginAttempts >= 5) {
+            if (user.failedLoginAttempts >= 100) {
                 user.isActive = false //5번 이상 넘어가면 비활성 계정으로 변경
 
                 await user.save()
